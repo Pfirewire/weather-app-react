@@ -1,9 +1,10 @@
+import Map from "./componenets/Map";
 
 
 function App() {
     return(
         <div>
-            App
+            <Map />
         </div>
     );
 }
