@@ -20,6 +20,7 @@ function SearchInput() {
             const data = await results.json();
             dispatch(setCoords(data.features[0].center));
             dispatch(setQuery(search));
+            setSearch("");
         }
     };
 
