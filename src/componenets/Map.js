@@ -3,7 +3,7 @@ import mapboxgl from "mapbox-gl"
 import styled from "styled-components";
 import {useEffect, useRef} from "react";
 
-function Map() {
+function Map({ onLoad }) {
     mapboxgl.accessToken = MAPBOX_TOKEN;
     const mapContainer = useRef();
 
@@ -14,7 +14,7 @@ function Map() {
             center: [-98.4946, 29.4252], // starting position [lng, lat]
             zoom: 10 // starting zoom
         });
-        return () => map.remove();
+        onLoad(map);
     }, []);
 
     return(
