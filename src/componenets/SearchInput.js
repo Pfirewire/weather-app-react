@@ -1,19 +1,23 @@
+import {useDispatch, useSelector} from "react-redux";
+import {setQuery} from "../store";
 
 
-function SearchInput({ searchQuery, onSearchChange, onEnter }) {
+function SearchInput() {
+    const {query} = useSelector(state => state.search);
+    const dispatch = useDispatch();
     const handleSearchChange = e => {
-        onSearchChange(e.target.value);
+        dispatch(setQuery(e.target.value));
     };
 
     const handleSearchEnter = e => {
         if(e.key === 'Enter') {
-            onEnter();
+
         }
     };
 
     return(
         <div>
-            <input value={searchQuery} onChange={handleSearchChange} onKeyDown={handleSearchEnter} />
+            <input value={query} onChange={handleSearchChange} onKeyDown={handleSearchEnter} />
         </div>
     );
 }

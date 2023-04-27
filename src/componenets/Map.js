@@ -2,8 +2,10 @@ import {MAPBOX_TOKEN} from "../keys";
 import mapboxgl from "mapbox-gl"
 import styled from "styled-components";
 import {useEffect, useRef} from "react";
+import {useSelector} from "react-redux";
 
-function Map({ onLoad }) {
+function Map() {
+    const {lng, lat, zoom} = useSelector(state => state.map);
     mapboxgl.accessToken = MAPBOX_TOKEN;
     const mapContainer = useRef();
 
@@ -11,10 +13,9 @@ function Map({ onLoad }) {
         const map = new mapboxgl.Map({
             container: mapContainer.current, // container ID
             style: 'mapbox://styles/mapbox/streets-v12', // style URL
-            center: [-98.4946, 29.4252], // starting position [lng, lat]
-            zoom: 10 // starting zoom
+            center: [lng, lat], // starting position [lng, lat]
+            zoom: zoom // starting zoom
         });
-        onLoad(map);
     }, []);
 
     return(
