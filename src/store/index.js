@@ -3,6 +3,7 @@ import {
     mapReducer,
     setLng,
     setLat,
+    setCoords,
     setZoom,
 } from "./slices/mapSlice";
 import {
@@ -25,6 +26,7 @@ export {
     store,
     setLng,
     setLat,
+    setCoords,
     setZoom,
     setQuery
 };

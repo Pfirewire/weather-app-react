@@ -15,6 +15,10 @@ const mapSlice = createSlice({
         setLat(state, action) {
             state.lat = action.payload;
         },
+        setCoords(state, action) {
+            state.lng = action.payload[0];
+            state.lat = action.payload[1];
+        },
         setZoom(state, action) {
             state.zoom = action.payload;
         },
@@ -25,6 +29,7 @@ const mapSlice = createSlice({
 export const {
     setLng,
     setLat,
+    setCoords,
     setZoom,
 } = mapSlice.actions;
 

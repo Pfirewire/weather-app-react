@@ -1,23 +1,31 @@
 import {useDispatch, useSelector} from "react-redux";
-import {setQuery} from "../store";
+import {setCoords, setQuery} from "../store";
+import {useState} from "react";
+import {geocode} from "../utils/geocode";
+import {MAPBOX_TOKEN} from "../keys";
 
 
 function SearchInput() {
-    const {query} = useSelector(state => state.search);
+    const [search, setSearch] = useState("");
     const dispatch = useDispatch();
     const handleSearchChange = e => {
-        dispatch(setQuery(e.target.value));
+        setSearch(e.target.value);
     };
 
-    const handleSearchEnter = e => {
+    const handleSearchEnter = async e => {
         if(e.key === 'Enter') {
-
+            const baseUrl = 'https://api.mapbox.com';
+            const endPoint = '/geocoding/v5/mapbox.places/';
+            const results = await fetch(`${baseUrl}${endPoint}${encodeURIComponent(search)}.json?access_token=${MAPBOX_TOKEN}`);
+            const data = await results.json();
+            dispatch(setCoords(data.features[0].center));
+            dispatch(setQuery(search));
         }
     };
 
     return(
         <div>
-            <input value={query} onChange={handleSearchChange} onKeyDown={handleSearchEnter} />
+            <input value={search} onChange={handleSearchChange} onKeyDown={handleSearchEnter} />
         </div>
     );
 }
