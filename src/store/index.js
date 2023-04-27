@@ -5,12 +5,17 @@ import {
     setLat,
     setZoom,
 } from "./slices/mapSlice";
+import {
+    searchReducer,
+    setQuery,
+} from "./slices/searchSlice";
 import {setupListeners} from "@reduxjs/toolkit/query";
 
 
 const store = configureStore({
     reducer: {
         map: mapReducer,
+        search: searchReducer,
     },
 });
 
@@ -21,4 +26,5 @@ export {
     setLng,
     setLat,
     setZoom,
+    setQuery
 };
