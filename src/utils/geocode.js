@@ -1,5 +1,4 @@
 import {MAPBOX_TOKEN} from "../keys";
-import {useDispatch} from "react-redux";
 
 export const geocode = async search => {
     let baseUrl = 'https://api.mapbox.com';

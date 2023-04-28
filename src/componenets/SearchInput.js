@@ -1,13 +1,9 @@
-import {useDispatch, useSelector} from "react-redux";
-import {setCoords, setQuery} from "../store";
 import {useEffect, useState} from "react";
-import {geocode} from "../utils/geocode";
 import {MAPBOX_TOKEN} from "../keys";
 
 
 function SearchInput({mapObject}) {
     const [search, setSearch] = useState("");
-    const dispatch = useDispatch();
     const handleSearchChange = e => {
         setSearch(e.target.value);
     };
@@ -26,8 +22,6 @@ function SearchInput({mapObject}) {
                 ],
                 essential: true // this animation is considered essential with respect to prefers-reduced-motion
             });
-            // dispatch(setCoords(data.features[0].center));
-            // dispatch(setQuery(search));
             setSearch("");
         }
     };

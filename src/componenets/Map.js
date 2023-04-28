@@ -2,11 +2,8 @@ import {MAPBOX_TOKEN} from "../keys";
 import mapboxgl from "mapbox-gl";
 import styled from "styled-components";
 import {useEffect, useRef} from "react";
-import {useSelector} from "react-redux";
 
 function Map({mapObject, setMapObject}) {
-    const {lng, lat, zoom} = useSelector(state => state.map);
-    const {query} = useSelector(state => state.search);
     const mapContainer = useRef(null);
     mapboxgl.accessToken = MAPBOX_TOKEN;
 
