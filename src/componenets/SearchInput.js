@@ -1,11 +1,11 @@
 import {useDispatch, useSelector} from "react-redux";
 import {setCoords, setQuery} from "../store";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {geocode} from "../utils/geocode";
 import {MAPBOX_TOKEN} from "../keys";
 
 
-function SearchInput() {
+function SearchInput({mapObject}) {
     const [search, setSearch] = useState("");
     const dispatch = useDispatch();
     const handleSearchChange = e => {
@@ -18,8 +18,16 @@ function SearchInput() {
             const endPoint = '/geocoding/v5/mapbox.places/';
             const results = await fetch(`${baseUrl}${endPoint}${encodeURIComponent(search)}.json?access_token=${MAPBOX_TOKEN}`);
             const data = await results.json();
-            dispatch(setCoords(data.features[0].center));
-            dispatch(setQuery(search));
+            // mapRef.current.setCenter([lng, lat]);
+            mapObject.flyTo({
+                center: [
+                    data.features[0].center[0],
+                    data.features[0].center[1],
+                ],
+                essential: true // this animation is considered essential with respect to prefers-reduced-motion
+            });
+            // dispatch(setCoords(data.features[0].center));
+            // dispatch(setQuery(search));
             setSearch("");
         }
     };

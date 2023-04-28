@@ -7,11 +7,12 @@ import {MAPBOX_TOKEN} from "./keys";
 
 
 function App() {
+    const [mapObject, setMapObject] = useState(false);
 
     return(
         <div>
-            <SearchInput />
-            <Map />
+            <SearchInput mapObject={mapObject} />
+            <Map mapObject={mapObject} setMapObject={setMapObject} />
         </div>
     );
 }
