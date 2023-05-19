@@ -11,8 +11,8 @@ function Map({mapObject, setMapObject}) {
         setMapObject(new mapboxgl.Map({
             container: mapContainer.current, // container ID
             style: 'mapbox://styles/mapbox/streets-v12', // style URL
-            center: [lng, lat], // starting position [lng, lat]
-            zoom: zoom // starting zoom
+            center: [-98.4946, 29.4252], // starting position [lng, lat]
+            zoom: 9 // starting zoom
         }));
 
     }, []);
