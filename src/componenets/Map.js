@@ -3,7 +3,7 @@ import mapboxgl from "mapbox-gl";
 import styled from "styled-components";
 import {useEffect, useRef} from "react";
 
-function Map({mapObject, setMapObject}) {
+function Map({mapObject, setMapObject, mapCenter}) {
     const mapContainer = useRef(null);
     mapboxgl.accessToken = MAPBOX_TOKEN;
 
@@ -11,7 +11,7 @@ function Map({mapObject, setMapObject}) {
         setMapObject(new mapboxgl.Map({
             container: mapContainer.current, // container ID
             style: 'mapbox://styles/mapbox/streets-v12', // style URL
-            center: [-98.4946, 29.4252], // starting position [lng, lat]
+            center: [mapCenter.lng, mapCenter.lat], // starting position [lng, lat]
             zoom: 9 // starting zoom
         }));
 

@@ -2,7 +2,7 @@ import {useEffect, useState} from "react";
 import {MAPBOX_TOKEN} from "../keys";
 
 
-function SearchInput({mapObject}) {
+function SearchInput({mapObject, setMapCenter}) {
     const [search, setSearch] = useState("");
     const handleSearchChange = e => {
         setSearch(e.target.value);
@@ -23,6 +23,7 @@ function SearchInput({mapObject}) {
                 essential: true // this animation is considered essential with respect to prefers-reduced-motion
             });
             setSearch("");
+            setMapCenter({ lng: data.features[0].center[0], lat: data.features[0].center[1] })
         }
     };
 
