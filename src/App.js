@@ -14,7 +14,7 @@ function App() {
     return(
         <div>
             <SearchInput mapObject={mapObject} setMapCenter={setMapCenter} />
-            <Map mapObject={mapObject} setMapObject={setMapObject} mapCenter={mapCenter} />
+            <Map mapObject={mapObject} setMapObject={setMapObject} mapCenter={mapCenter} setMapCenter={setMapCenter} />
             <WeatherTest mapObject={mapObject} mapCenter={mapCenter} />
         </div>
     );
