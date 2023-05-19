@@ -1,21 +1,18 @@
-import {useEffect} from "react";
-import {useCurrentWeather} from "../api/useCurrentWeather";
+import {useGetFetch} from "../api/useGetFetch";
+import {OPEN_WEATHER_KEY} from "../keys";
 
 
-function WeatherTest({ mapObject, mapCenter }) {
-    const data = useCurrentWeather(mapCenter);
+function WeatherTest({ mapCenter }) {
+    // const currentWeatherData = await useFetchCurrentWeather(mapCenter);
+    const { data, error, loading } = useGetFetch(`https://api.openweathermap.org/data/2.5/weather?lat=${mapCenter.lat}&lon=${mapCenter.lng}&appid=${OPEN_WEATHER_KEY}`)
 
-
-    console.log(data);
-    // const fetchCurrentWeather = async () => {
-    //     console.log(mapCenter.lng);
-    //     console.log(mapCenter.lat);
-    //     console.log(data);
-    // };
-    //
-    // useEffect(() => {
-    //     fetchCurrentWeather();
-    // }, [mapCenter]);
+    if(loading) {
+        console.log("loading...");
+    } else if(error) {
+        console.log("error...");
+    } else {
+        console.log(data);
+    }
 
     return(
         <div></div>
