@@ -8,8 +8,10 @@ function Map({ mapObject, setMapObject, mapCenter, setMapCenter }) {
     mapboxgl.accessToken = MAPBOX_TOKEN;
 
     const handleMouseUp = () => {
-        setMapCenter(mapObject.getCenter());
-        console.log(mapObject.getCenter());
+        if(mapCenter.lng !== mapObject.getCenter().lng || mapCenter.lat !== mapObject.getCenter().lat) {
+            setMapCenter(mapObject.getCenter());
+            console.log(mapObject.getCenter());
+        }
     }
 
     useEffect(() => {
