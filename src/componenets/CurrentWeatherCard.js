@@ -12,5 +12,5 @@ function CurrentWeatherCard() {
 export default CurrentWeatherCard;
 
 const CurrentWeatherCardWrapper = styled.div`
-  
+  flex-grow: 1;
 `;
