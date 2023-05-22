@@ -16,7 +16,7 @@ function App() {
     return(
         <AppWrapper>
             <TopWrapper>
-                <CurrentWeatherCard />
+                <CurrentWeatherCard mapCenter={mapCenter} />
                 <SearchAndMapWrapper>
                     <SearchInput mapObject={mapObject} setMapCenter={setMapCenter} />
                     <Map mapObject={mapObject} setMapObject={setMapObject} mapCenter={mapCenter} setMapCenter={setMapCenter} />
@@ -42,5 +42,5 @@ const TopWrapper = styled.div`
 `;
 
 const SearchAndMapWrapper = styled.div`
-  flex-grow: 1;
+  flex-grow: 2;
 `;

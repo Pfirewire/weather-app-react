@@ -33,6 +33,6 @@ function Map({ mapObject, setMapObject, mapCenter, setMapCenter }) {
 export default Map;
 
 const MapWrapper = styled.div`
-  width: 600px;
-  height: 600px;
+  width: 100%;
+  height: 60vh;
 `;
