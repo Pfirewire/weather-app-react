@@ -22,9 +22,15 @@ function CurrentWeatherCard({ mapCenter }) {
     } else {
         content = (
             <>
-                <h3>Current Weather: {currentWeather.data.name}</h3>
-                <div>Temperature: {currentWeather.data.main.temp} F</div>
-                <div>Feels Like: {currentWeather.data.main.feels_like} F</div>
+                <div>
+                    <h3>Current Weather: {currentWeather.data.name}</h3>
+                    <div>Temperature: {currentWeather.data.main.temp} F</div>
+                    <div>Feels Like: {currentWeather.data.main.feels_like} F</div>
+                </div>
+                <div>
+                    <h4>{currentWeather.data.weather[0].description}</h4>
+                    <img src={`https://openweathermap.org/img/wn/${currentWeather.data.weather[0].icon}@4x.png`} />
+                </div>
             </>
         );
     }
@@ -40,4 +46,6 @@ export default CurrentWeatherCard;
 
 const CurrentWeatherCardWrapper = styled.div`
   flex-grow: 1;
+  display: flex;
+  
 `;
